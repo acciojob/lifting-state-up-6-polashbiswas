@@ -8,11 +8,19 @@ let msg = [
 const Parent = () => {
     let [todos, setTodos] = useState(msg);
 
+    // const handleComplete = (index) => {
+    //     const updatedTodos = [...todos];
+    //     updatedTodos[index].completed = true;
+    //     setTodos(updatedTodos);
+    //   };
     const handleComplete = (index) => {
-        const updatedTodos = [...todos];
-        updatedTodos[index].completed = true;
-        setTodos(updatedTodos);
+        setTodos(prevTodos => {
+          const updatedTodos = [...prevTodos];
+          updatedTodos[index].completed = true;
+          return updatedTodos;
+        });
       };
+      
 
   return (
     <div>
