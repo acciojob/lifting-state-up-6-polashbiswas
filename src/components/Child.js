@@ -1,26 +1,24 @@
 import React from 'react'
 
-const Child = ({message, completetodo, todo}) => {
+const Child = ({ handleComplete, todos }) => {
 
-    function handelChild(index){
-        completetodo([...todo, index]);
-    }
-  return (
-    <div>
-        <h2>Child Component</h2>
-        <ul>
-        {
-            message.map((value, index) =>{
-                return <li key={index}>{value.key}
-                { !todo.includes(index) &&
-                <button onClick={()=>handelChild(index)}>Complete</button>
-            }
-                </li>
-            })
-        }
-        </ul>
-    </div>
-  )
+
+    return (
+        <div>
+            <h2>Child Component</h2>
+            <ul>
+                {
+                    todos.map((value, index) => {
+                        return <li key={index}>{value.key}
+                            {!value.completed &&
+                                <button onClick={() => handleComplete(index)}>Complete</button>
+                            }
+                        </li>
+                    })
+                }
+            </ul>
+        </div>
+    )
 }
 
 export default Child;

@@ -1,18 +1,23 @@
 import React,{useState} from 'react'
 import Child from './Child';
 let msg = [
-    {key:"Learn React"},
-    {key:"Build a React app"},
-    {key:"Deploy the React app"}
-]
+    { key: "Learn React", completed: false },
+    { key: "Build a React app", completed: false },
+    { key: "Deploy the React app", completed: false }
+  ];
 const Parent = () => {
-    let [todos, setTodos] = useState([]);
+    let [todos, setTodos] = useState(msg);
 
+    const handleComplete = (index) => {
+        const updatedTodos = [...todos];
+        updatedTodos[index].completed = true;
+        setTodos(updatedTodos);
+      };
 
   return (
     <div>
         <h1>Parent Component</h1>
-        <Child message={msg} completetodo={setTodos} todo={todos}/>
+        <Child todos={todos} handleComplete={handleComplete}/>
     </div>
   )
 }
