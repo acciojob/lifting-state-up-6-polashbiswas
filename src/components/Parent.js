@@ -5,6 +5,7 @@ let msg = [
     { key: "Build a React app", completed: false },
     { key: "Deploy the React app", completed: false }
   ];
+  
 const Parent = () => {
     let [todos, setTodos] = useState(msg);
 
